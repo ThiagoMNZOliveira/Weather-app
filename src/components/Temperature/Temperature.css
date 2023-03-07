@@ -1,0 +1,20 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border: solid 2px #000;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+}
+
+.info span {
+    margin: 10px
+}
+
+.IoLocationSharp {
+    font-size: 20px;
+}

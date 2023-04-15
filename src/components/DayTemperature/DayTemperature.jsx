@@ -2,7 +2,7 @@ import './DayTemperature.css'
 
 const DayTemperature = () => {
   return (
-    <div>DayTemperature</div>
+    <div className='temperature-container'>DayTemperature</div>
   )
 }
 

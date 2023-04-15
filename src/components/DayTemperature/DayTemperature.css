@@ -1,0 +1,12 @@
+.temperature-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border: solid 2px #000;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 5px 5px 10px rgb(0, 0, 0);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}

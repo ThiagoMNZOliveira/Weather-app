@@ -2,7 +2,7 @@ import './WeekTemperature.css'
 
 const WeekTemperature = () => {
   return (
-    <div>WeekTemperature</div>
+    <div className='temperature-container'>WeekTemperature</div>
   )
 }
 

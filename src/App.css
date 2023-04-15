@@ -2,7 +2,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #296297;
+  /* background-color: #296297; */
+
+  background-color: #5fbcde;
+  opacity: 1;
+  background-image: radial-gradient(#ffffff 2px, #5fbcde 2px);
+  background-size: 40px 40px;
 }
 
 
@@ -12,6 +17,13 @@
   align-items: center;
   width: 100%;
   height: 100vh;
-  
+
 }
 
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}

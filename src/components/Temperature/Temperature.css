@@ -9,6 +9,7 @@
     box-shadow: 5px 5px 10px rgb(0, 0, 0);
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
+    
 }
 
 .info {
@@ -16,7 +17,7 @@
     flex-direction: column;
 }
 
-.info span {
+.info p {
     margin: 10px
 }
 
@@ -24,7 +25,11 @@
     font-size: 20px;
 }
 
-.icon {
-    color: #e6e93b;
-    font-size: 80px;
+.localization {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.temperature {
+    font-size: 40px;
 }

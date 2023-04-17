@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { AsyncPaginate } from 'react-select-async-paginate'
 
-import { GEO_API_URL, geoAPIOptions } from '../../api'
+import { geoAPIOptions } from '../../api'
 
 
-import { MdSearch } from 'react-icons/md'
+
 import './Search.css'
 
 
@@ -20,7 +20,7 @@ const Search = ({ onSearchChange }) => {
 
 
     const loadOptions = (inputValue) => {
-        return fetch(`${GEO_API_URL}/cities?minPopulation=1000000&namePrefix=${inputValue}`, geoAPIOptions)
+        return fetch(`${import.meta.env.VITE_GEO_API_URL}/cities?minPopulation=1000000&namePrefix=${inputValue}`, geoAPIOptions)
             .then(response => response.json())
             .then(response => {
                 return {
@@ -44,13 +44,13 @@ const Search = ({ onSearchChange }) => {
             borderRadius: '15px',
             border: '2px solid #ccc',
             boxShadow: state.isFocused ? '0 0 0 2px #3699FF' : null,
-            
+
         }),
         option: (provided, state) => ({
             ...provided,
             backgroundColor: state.isFocused ? '#3699FF' : null,
             color: state.isFocused ? 'white' : null,
-        
+
         }),
     }
 

@@ -1,6 +1,3 @@
-
-
-
 export const geoAPIOptions = {
 	method: 'GET',
 	headers: {

@@ -14,20 +14,32 @@ import Search from './components/Search/Search'
 
 function App() {
 
-  const [city, setCity] = useState(null)
+  const [currentWeater, setCurrentWeater] = useState(null)
+  const [forecast, setForecast] = useState(null)
+
 
   const handleOnSearchChange = (searchData) => {
-    setCity(searchData.label)
+    
     const [latitude, longitude] = searchData.value.split(' ')
 
-    const currentWheatherFetch = fetch(`${import.meta.env.VITE_API_URL}/weather?lat=${latitude}&lon=${longitude}&appid=${import.meta.env.VITE_WHEATHER_API_KEY}`)
+    const currentWeaterFetch = fetch(`${import.meta.env.VITE_API_URL}/weather?lat=${latitude}&lon=${longitude}&appid=${import.meta.env.VITE_WEATHER_API_KEY}`)
 
-    const forecastFetch = fetch(`${import.meta.env.VITE_API_URL}/forecast?lat=${latitude}&lon=${longitude}&appid=${import.meta.env.VITE_WHEATHER_API_KEY}`)
+    const forecastFetch = fetch(`${import.meta.env.VITE_API_URL}/forecast?lat=${latitude}&lon=${longitude}&appid=${import.meta.env.VITE_WEATHER_API_KEY}`)
 
-    Promise.all([currentWheatherFetch, forecastFetch])
+    Promise.all([currentWeaterFetch, forecastFetch])
+      .then(async (reponse) => {
+        const weaterResponse = await reponse[0].json()
+        const forecastResponse = await reponse[1].json()
+
+        setCurrentWeater({ city: searchData.label, ...weaterResponse })
+        setForecast({ city: searchData.label, ...forecastResponse })
+
+      })
+      .catch((err) => console.log(err))
 
   }
 
+  console.log(currentWeater, forecast)
 
   return (
     <div className="App">
@@ -35,9 +47,9 @@ function App() {
         <div className='search'>
           <Search onSearchChange={handleOnSearchChange} />
         </div>
-        <div className='wheather'>
-          {city && (<>
-            <Temperature cityName={city} />
+        <div className='weater'>
+          {currentWeater && (<>
+            <Temperature data={currentWeater}/>
             <DayTemperature />
             <WeekTemperature />
           </>)}

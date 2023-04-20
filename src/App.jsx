@@ -14,7 +14,7 @@ import Search from './components/Search/Search'
 
 function App() {
 
-  const [currentWeater, setCurrentWeater] = useState(null)
+  const [currentWeather, setCurrentWeather] = useState(null)
   const [forecast, setForecast] = useState(null)
 
 
@@ -22,16 +22,16 @@ function App() {
     
     const [latitude, longitude] = searchData.value.split(' ')
 
-    const currentWeaterFetch = fetch(`${import.meta.env.VITE_API_URL}/weather?lat=${latitude}&lon=${longitude}&appid=${import.meta.env.VITE_WEATHER_API_KEY}`)
+    const currentWeatherFetch = fetch(`${import.meta.env.VITE_API_URL}/weather?lat=${latitude}&lon=${longitude}&appid=${import.meta.env.VITE_WEATHER_API_KEY}&units=metric`)
 
-    const forecastFetch = fetch(`${import.meta.env.VITE_API_URL}/forecast?lat=${latitude}&lon=${longitude}&appid=${import.meta.env.VITE_WEATHER_API_KEY}`)
+    const forecastFetch = fetch(`${import.meta.env.VITE_API_URL}/forecast?lat=${latitude}&lon=${longitude}&appid=${import.meta.env.VITE_WEATHER_API_KEY}&units=metric`)
 
-    Promise.all([currentWeaterFetch, forecastFetch])
+    Promise.all([currentWeatherFetch, forecastFetch])
       .then(async (reponse) => {
-        const weaterResponse = await reponse[0].json()
+        const weatherResponse = await reponse[0].json()
         const forecastResponse = await reponse[1].json()
 
-        setCurrentWeater({ city: searchData.label, ...weaterResponse })
+        setCurrentWeather({ city: searchData.label, ...weatherResponse })
         setForecast({ city: searchData.label, ...forecastResponse })
 
       })
@@ -39,7 +39,7 @@ function App() {
 
   }
 
-  console.log(currentWeater, forecast)
+  console.log(currentWeather, forecast)
 
   return (
     <div className="App">
@@ -47,9 +47,9 @@ function App() {
         <div className='search'>
           <Search onSearchChange={handleOnSearchChange} />
         </div>
-        <div className='weater'>
-          {currentWeater && (<>
-            <Temperature data={currentWeater}/>
+        <div className='weather'>
+          {currentWeather && (<>
+            <Temperature data={currentWeather}/>
             <DayTemperature />
             <WeekTemperature />
           </>)}

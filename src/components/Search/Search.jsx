@@ -39,16 +39,16 @@ const Search = ({ onSearchChange }) => {
     const customStyles = {
         control: (provided, state) => ({
             ...provided,
-            width: '380px',
+            width: '500px',
             height: '40px',
             borderRadius: '15px',
-            border: '2px solid #ccc',
+            border: '2px solid #000',
             boxShadow: state.isFocused ? '0 0 0 2px #3699FF' : null,
 
         }),
         option: (provided, state) => ({
             ...provided,
-            backgroundColor: state.isFocused ? '#3699FF' : null,
+            backgroundColor: state.isFocused ? '#1b4e5e' : null,
             color: state.isFocused ? 'white' : null,
 
         }),

@@ -7,10 +7,10 @@ const Temperature = ({ data }) => {
       <div className='info'>
         <div>
           <p className='localization'>{data.city}<IoLocationSharp className='IoLocationSharp'></IoLocationSharp></p>
-          <p className='description'>{data.weather[0].description}</p>
+          <p className='description'>{data.weather[0].description[0].toUpperCase()+data.weather[0].description.slice(1)}</p>
         </div>
-        <p className='temperature'>{data.main.temp}ºC</p>
-        <p className='feeling'>{data.main.temp_max}ºC / {data.main.temp_min}ºC Sensação térmica de {data.main.feels_like}ºC</p>
+        <p className='temperature'>{Math.round(data.main.temp)}ºC</p>
+        <p className='feeling'>{Math.round(data.main.temp_max)}ºC / {Math.round(data.main.temp_min)}ºC Sensação térmica de {Math.round(data.main.feels_like)}ºC</p>
       </div>
       <div className='icon'>
         <img alt='weather' className='weather-icon' src={`icons/${data.weather[0].icon}.png`} />

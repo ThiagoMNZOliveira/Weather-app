@@ -22,9 +22,9 @@ function App() {
     
     const [latitude, longitude] = searchData.value.split(' ')
 
-    const currentWeatherFetch = fetch(`${import.meta.env.VITE_API_URL}/weather?lat=${latitude}&lon=${longitude}&appid=${import.meta.env.VITE_WEATHER_API_KEY}&units=metric`)
+    const currentWeatherFetch = fetch(`${import.meta.env.VITE_API_URL}/weather?lat=${latitude}&lon=${longitude}&appid=${import.meta.env.VITE_WEATHER_API_KEY}&units=metric&lang=pt`)
 
-    const forecastFetch = fetch(`${import.meta.env.VITE_API_URL}/forecast?lat=${latitude}&lon=${longitude}&appid=${import.meta.env.VITE_WEATHER_API_KEY}&units=metric`)
+    const forecastFetch = fetch(`${import.meta.env.VITE_API_URL}/forecast?lat=${latitude}&lon=${longitude}&appid=${import.meta.env.VITE_WEATHER_API_KEY}&units=metric&lang=pt`)
 
     Promise.all([currentWeatherFetch, forecastFetch])
       .then(async (reponse) => {
@@ -50,7 +50,7 @@ function App() {
         <div className='weather'>
           {currentWeather && (<>
             <Temperature data={currentWeather}/>
-            <DayTemperature />
+            <DayTemperature data={forecast}/>
             <WeekTemperature />
           </>)}
         </div>

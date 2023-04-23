@@ -18,6 +18,8 @@
     border: solid 2px #000;
     border-radius: 15px;
     min-width: 150px;
+    background-color: #040822;
+    box-shadow: 5px 5px 10px #000;
 }
 
 .time, .temp, .humidity {

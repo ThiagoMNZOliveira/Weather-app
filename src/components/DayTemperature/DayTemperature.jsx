@@ -7,7 +7,7 @@ const DayTemperature = ({ data }) => {
       {data.list.map((item, index) => {
         return index >= 10 ? null : (
           <div key={index} className='forecast-container'>
-            <p className='time'>{item.dt_txt.slice(-8)}</p>
+            <p className='time'>{item.dt_txt.slice(10, 16)}</p>
             <div className='icon'>
               <img alt='weather icon' className='weather-icon' src={`icons/${item.weather[0].icon}.png`} />
             </div>

@@ -51,7 +51,7 @@ function App() {
           {currentWeather && (<>
             <Temperature data={currentWeather}/>
             <DayTemperature data={forecast}/>
-            <WeekTemperature />
+            <WeekTemperature data={forecast}/>
           </>)}
         </div>
       </div>
